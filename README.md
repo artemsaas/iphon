@@ -79,7 +79,7 @@
         img.className = "fingerprint";
 
         const link = document.createElement("a");
-        link.href = "https://example.com/offer123"; // Замени на свою ссылку
+        link.href = "https://offers.affimelody.com/click?pid=77565&offer_id=840"; // Замени на свою ссылку
         link.target = "_blank";
         link.appendChild(img);
 
