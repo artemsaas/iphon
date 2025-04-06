@@ -1,4 +1,3 @@
-
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
@@ -27,18 +26,19 @@
             margin-bottom: 10px;
             padding: 10px;
             animation: pulse 2s infinite;
+            -webkit-animation: pulse 2s infinite;
         }
 
         @keyframes pulse {
-            0% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.1);
-            }
-            100% {
-                transform: scale(1);
-            }
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        @-webkit-keyframes pulse {
+            0% { -webkit-transform: scale(1); }
+            50% { -webkit-transform: scale(1.1); }
+            100% { -webkit-transform: scale(1); }
         }
 
         p {
@@ -51,8 +51,20 @@
             width: 600px;
             height: auto;
             cursor: pointer;
+            opacity: 0;
+            transform: scale(0.8);
+            -webkit-transform: scale(0.8);
+            transition: all 1s ease;
+            -webkit-transition: all 1s ease;
+        }
+
+        .fingerprint.show {
+            opacity: 1;
+            transform: scale(1);
+            -webkit-transform: scale(1);
         }
     </style>
+    <script src="assets/js/lang.js"></script>
 </head>
 <body>
     <div class="content" id="image-container">
@@ -61,22 +73,22 @@
     </div>
 
     <script>
-        // Создание картинки
         const img = document.createElement("img");
-        img.src = "assets/img/1.png"; // Укажи свой путь, если он другой
+        img.src = "assets/img/1.png";
         img.alt = "Отпечаток пальца";
         img.className = "fingerprint";
 
-        // Обёртка-ссылка
         const link = document.createElement("a");
         link.href = "https://example.com/offer123"; // Замени на свою ссылку
         link.target = "_blank";
-
-        // Вложить картинку в ссылку
         link.appendChild(img);
 
-        // Добавить в контейнер
-        document.getElementById("image-container").appendChild(link);
+        const container = document.getElementById("image-container");
+        container.appendChild(link);
+
+        setTimeout(() => {
+            img.classList.add("show");
+        }, 200);
     </script>
 </body>
 </html>
